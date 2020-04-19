@@ -1,0 +1,19 @@
+
+
+Create a 20-intel.conf file:
+
+sudo vi /usr/share/X11/xorg.conf.d/20-intel.conf
+
+Add the following configuration information into the file:
+
+Section "Device"
+    Identifier "intelgpu0"
+    Driver "intel"
+    Option "VirtualHeads" "2"
+EndSection
+
+This tells the Intel GPU to create 2 virtual displays. You can change the number of VirtualHeads to your needs.
+
+Then logout and login. You should see VIRTUAL1 and VIRTUAL2 when you run xrandr.
+
+Note if you were using the modesetting driver previously (which is the modern default) switching to the intel driver will cause the names of displays to change from, eg, HDMI-1 or DP-1 to HDMI1 or DP1.
